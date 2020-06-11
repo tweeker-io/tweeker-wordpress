@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name:	Tweeker.io for WP
+ * Plugin Name:	Tweeker
  * Plugin URI:	https://tweeker.io/
- * Description:	Embed Tweeker.io in your WordPress website easily. Just activate the plugin, go to " Settings > Tweeker.io " to set your Business ID and EmbedVersion. Happy using :)
+ * Description:	Embed Tweeker.io in your WordPress website easily. To activate the plugin, go to "Settings > Tweeker" and set your Business ID and Embed Version.
  * Version:		1.0
- * Author:		Tweeker.io
+ * Author:		Tweeker
  * Author URI:	https://tweeker.io/
  */
 
@@ -13,14 +13,13 @@
  */
 defined('ABSPATH') or die('You can not access it directly');
 
-
 /**
- * class Tweeker_For_WP
+ * class Tweeker
  * Handles plugin functionality
  */
-class Tweeker_For_WP {
+class Tweeker {
 
-	public static $group = 'tweeker-for-wp';
+	public static $group = 'tweeker';
 
 	/**
 	 * Class Constructor
@@ -28,13 +27,13 @@ class Tweeker_For_WP {
 	 * by attaching callbacks to WordPress hooks
 	 */
 	function __construct() {
-		$plugin = plugin_basename(__FILE__); 
+		$plugin = plugin_basename(__FILE__);
 		add_action('admin_init', [$this, 'register_settings']);
 		add_action('admin_menu', [$this, 'admin_menu']);
 		add_action('wp_enqueue_scripts', [$this, 'enqueue']);
 		add_filter('plugin_action_links_'.$plugin, [$this, 'settings_link']);
 	}
-	
+
 	/**
 	 * Function to register settings fields
 	 **/
@@ -45,13 +44,13 @@ class Tweeker_For_WP {
 
 	/**
 	 * Function adds a new menu item
-	 * "Tweeker.io" in WP admin menu
+	 * "Tweeker" in WP admin menu
 	 * as a child of Settings menu
 	 **/
 	function admin_menu() {
-		add_options_page('Tweeker.io for WP', 'Tweeker.io', 'administrator', 'tweeker_for_wp', [$this, 'admin_page']);
+		add_options_page('Tweeker', 'Tweeker', 'administrator', 'tweeker_for_wp', [$this, 'admin_page']);
 	}
-	
+
 	/**
 	 * Function for Displaying Settings Fields
 	 * In Plugin Admin Page
@@ -61,7 +60,7 @@ class Tweeker_For_WP {
 		$ver = get_option('tweekerio_wp_embed_version', '');
 		?>
 			<div class="wrap">
-				<h1 class="admin-page-title">Tweeker.io for WP - Settings</h1>
+				<h1 class="admin-page-title">Tweeker - Settings</h1>
 				<br><br>
 				<form method="POST" action="options.php">
 					<?php
@@ -91,7 +90,7 @@ class Tweeker_For_WP {
 			</div>
 		<?php
 	}
-	
+
 	/**
 	 * Embeds Plugin JS Script into website
 	 * before Head closing tag
@@ -104,14 +103,14 @@ class Tweeker_For_WP {
 			wp_enqueue_script( 'tweeker-io-embed', $src, array(), null, false);
 		}
 	}
-	
+
 	/**
 	 * The function adds settings link
 	 * to plugins page
 	 **/
-	function settings_link( $links ) { 
-	  $new = '<a href="options-general.php?page=tweeker_for_wp">Settings</a>'; 
-	  array_unshift($links, $new); 
+	function settings_link( $links ) {
+	  $new = '<a href="options-general.php?page=tweeker_for_wp">Settings</a>';
+	  array_unshift($links, $new);
 	  return $links;
 	}
 
@@ -121,6 +120,6 @@ class Tweeker_For_WP {
  * Check if Class Exists
  * Initiate an object of the class
  **/
-if( class_exists('Tweeker_For_WP')){
-	$tweekerforwp = new Tweeker_For_WP();
+if( class_exists('Tweeker')){
+	$tweekerforwp = new Tweeker();
 }
