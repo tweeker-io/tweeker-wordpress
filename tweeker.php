@@ -78,7 +78,7 @@ class Tweeker {
 							<tr>
 								<th scope="row">Embed Version</th>
 								<td>
-									<input type="text" name="tweekerio_wp_embed_version" id="tweekerio_wp_embed_version" placeholder="Enter embed version here..." value="<?php echo $ver; ?>" style="min-width: 40%;" required>
+									<input type="text" name="tweekerio_wp_embed_version" id="tweekerio_wp_embed_version" placeholder="Enter embed version here..." value="<?php echo $ver; ?>" style="min-width: 40%;">
 								</td>
 							</tr>
 						</table>
@@ -98,6 +98,9 @@ class Tweeker {
 	function enqueue() {
 		$biz = get_option('tweekerio_wp_business_id', '');
 		$ver = get_option('tweekerio_wp_embed_version', '');
+		if (empty($ver)) {
+			$ver = 'latest';
+		}
 		if (!empty($biz) && !empty($ver)) {
 			$src = 'https://embed.tweeker.io/external.js?businessId='.$biz.'&embedVersion='.$ver;
 			wp_enqueue_script( 'tweeker-io-embed', $src, array(), null, false);
