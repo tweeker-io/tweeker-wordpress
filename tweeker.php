@@ -4,8 +4,7 @@
  * Plugin URI:	https://tweeker.io
  * Description:	Add Tweeker to your wordpress site. Simple a/b and multivariate testing on your site.
  * Version:		1.0
- * Author:		Tweeker
- * Author URI:	https://tweeker.io
+ * Author:		tweekerio
  * License: GPLv2 or later
  */
 
