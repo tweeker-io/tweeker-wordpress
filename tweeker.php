@@ -1,11 +1,12 @@
 <?php
 /**
- * Plugin Name:	Tweeker
- * Plugin URI:	https://tweeker.io/
- * Description:	Embed Tweeker.io in your WordPress website easily. To activate the plugin, go to "Settings > Tweeker" and set your Business ID and Embed Version.
+ * Plugin Name:	Tweeker - Simple a/b and multivariate testing
+ * Plugin URI:	https://tweeker.io
+ * Description:	Add Tweeker to your wordpress site. Simple a/b and multivariate testing on your site.
  * Version:		1.0
  * Author:		Tweeker
- * Author URI:	https://tweeker.io/
+ * Author URI:	https://tweeker.io
+ * License: GPLv2 or later
  */
 
 /**
