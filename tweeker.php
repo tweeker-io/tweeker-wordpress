@@ -3,7 +3,7 @@
  * Plugin Name:	Tweeker - Simple a/b and multivariate testing
  * Plugin URI:	https://tweeker.io
  * Description:	Add Tweeker to your wordpress site. Simple a/b and multivariate testing on your site.
- * Version:		1.0
+ * Version:		1.1
  * Author:		tweekerio
  * License: GPLv2 or later
  */
@@ -28,6 +28,8 @@ class Tweeker {
 	 */
 	function __construct() {
 		$plugin = plugin_basename(__FILE__);
+		register_activation_hook(__FILE__, [$this, 'activate']);
+		add_action('admin_init', [$this, 'redirect']);
 		add_action('admin_init', [$this, 'register_settings']);
 		add_action('admin_menu', [$this, 'admin_menu']);
 		add_action('wp_enqueue_scripts', [$this, 'enqueue']);
@@ -48,7 +50,7 @@ class Tweeker {
 	 * as a child of Settings menu
 	 **/
 	function admin_menu() {
-		add_options_page('Tweeker', 'Tweeker', 'administrator', 'tweeker_for_wp', [$this, 'admin_page']);
+		add_options_page('Tweeker', 'Tweeker', 'administrator', 'tweeker', [$this, 'admin_page']);
 	}
 
 	/**
@@ -112,9 +114,29 @@ class Tweeker {
 	 * to plugins page
 	 **/
 	function settings_link( $links ) {
-	  $new = '<a href="options-general.php?page=tweeker_for_wp">Settings</a>';
+	  $new = '<a href="options-general.php?page=tweeker">Settings</a>';
 	  array_unshift($links, $new);
 	  return $links;
+	}
+
+	/**
+	 * Function to be called when plugin
+	 * is activated to do necessary things
+	 **/
+	function activate() {
+		add_option('tweekerioforwp_activation_redirect', true);
+	}
+
+	/**
+	 * Redirect to plugin settings page
+	 * when plugin is activated
+	 **/
+	function redirect() {
+		if (get_option('tweekerioforwp_activation_redirect', false)) {
+			delete_option('tweekerioforwp_activation_redirect');
+			wp_redirect("options-general.php?page=tweeker");
+			exit;
+		}
 	}
 
 }
