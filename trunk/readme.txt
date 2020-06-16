@@ -31,7 +31,7 @@ Tweeker protects your privacy and that of your customers. Our software is GDPR c
 
 == Installation ==
 1. Visit [https://tweeker.io](https://tweeker.io) and sign up for an account.
-2. When you get to the ["install" or "embed" step on Tweeker](https://app.tweeker.io/embed#wordpress) , visit your wordpress site admin, click on "Plugins" in the left menu, then "Add New" and search for "Tweeker".
+2. When you get to the ["install" or "embed" step on Tweeker](https://app.tweeker.io/embed#wordpress), visit your wordpress site admin, click on "Plugins" in the left menu, then "Add New" and search for "Tweeker".
 3. Click "Install Now" next to the Tweeker plugin.
 4. After it's installed click "Activate Plugin".
 6. Copy and paste your `businessId` and `embedVersion` from the [Tweeker Embed Setup]https://app.tweeker.io/embed#wordpress) page.
