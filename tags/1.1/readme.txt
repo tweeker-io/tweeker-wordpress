@@ -55,6 +55,8 @@ If it's still not working, contact us at [hello@tweeker.io](mailto:hello@tweeker
 == Screenshots ==
 
 1. The Tweeker Editor page where you can set up your tests
+2. Viewing the results of your Tweeker tests
+3. Installing Tweeker onto your site is super simple with this plugin
 
 == Changelog ==
 
